@@ -1,0 +1,8 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="MUD-Client/MUD-Client.vcxproj" Id="91922d28-c171-46be-b051-d2884fd27691" />
+  <Project Path="MUD-Server/MUD-Server.vcxproj" Id="14c02f47-16ce-4b1a-a773-560ff6a7e540" />
+</Solution>

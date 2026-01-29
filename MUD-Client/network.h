@@ -32,7 +32,7 @@ typedef int socket_t;
 
 bool checkError(int err) {
 	if (err < 0) {
-		std::cout << GetSocketError;
+		std::cout << "\nError:" << GetSocketError;
 		return true;
 	}
 	return false;

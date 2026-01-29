@@ -14,15 +14,33 @@ int main()
     sockaddr_in socketAddress;
     socketAddress.sin_family = AF_INET;
     socketAddress.sin_port = htons(2000);
-    socketAddress.sin_addr.S_un.S_addr = inet_addr("127.0.0.1");
+    char address[15];
+    std::cout << "Enter the IP Address: ";
+    std::cin.getline((char*)&address,15);
+    socketAddress.sin_addr.S_un.S_addr = inet_addr(address);
     memset(&socketAddress.sin_zero, 0, sizeof(socketAddress.sin_zero));
 
     err = connect(sock, (const sockaddr*)&socketAddress, sizeof(socketAddress));
     if (checkError(err)) return -1;
     std::cout << "connection established\n";
-    const char data[128] = "hello form sender side";
-    int sent;
-    sent = send(sock,(const char*)&data,128,0);
-    std::cout << "Total data sent is " << sent;
-    std::cin.get();
+    bool done = false;
+    char data[128];
+    while (!done) {
+        std::cout << "Enter the Message: ";
+        std::cin.getline((char*)&data,128);
+        if (strcmp(data, "exit") == 0 || strcmp(data, "servquit") == 0) {
+            done = true;
+        }
+        else {
+            int sent;
+            sent = send(sock, (const char*)&data,strlen(data) + 1, 0);
+            std::cout << "Total data sent is " << sent << "\n";
+        }
+    }
+
+    
+	shutdown(sock, SD_BOTH);
+	closesocket(sock);
+	CloseSocketLib;
+    return 0;
 }

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "network.h"
 
-int main()
+int Main()
 {
     StartSocketLib;
     int err;

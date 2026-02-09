@@ -2,7 +2,7 @@
 #include "network.h"
 #include <vector>
 
-int main()
+int Main()
 {
     StartSocketLib;
     int err;

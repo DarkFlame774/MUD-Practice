@@ -128,9 +128,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MUD-Server.cpp" />
+    <ClCompile Include="MultiThread-Practice.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="network.h" />
+    <ClInclude Include="ThreadLib\ThreadLib.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

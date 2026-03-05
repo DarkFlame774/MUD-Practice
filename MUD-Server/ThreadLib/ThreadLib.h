@@ -5,6 +5,7 @@
 	#include<map>
 #else
 	#include<pthread.h>
+	#include<unistd.h>
 #endif
 
 typedef void (*ThreadFunc)(void*);
@@ -13,11 +14,51 @@ typedef void (*ThreadFunc)(void*);
 	typedef DWORD Thread_Id;
 	std::map<DWORD,HANDLE> g_handlemap;
 #else
-	typedef pthread_t Thread_ID;
+	typedef pthread_t Thread_Id;
 #endif
 
 
 namespace ThreadLib {
+	
+	class Mutex {
+		protected:
+			#ifdef _WIN32
+				CRITICAL_SECTION m_mutex;
+			#else
+				pthread_mutex_t m_mutex;
+			#endif
+		public:
+			Mutex() {
+				#ifdef _WIN32
+					InitializeCriticalSection(&m_mutex);
+				#else
+					pthread_mutex_init(& m_mutex);
+				#endif
+			}
+			~Mutex() {
+				#ifdef _WIN32
+					DeleteCriticalSection(&m_mutex);
+				#else
+					pthread_mutex_destroy(& m_mutex);
+				#endif
+			}
+
+			inline void Lock() {
+				#ifdef _WIN32
+					EnterCriticalSection(&m_mutex);
+				#else
+					pthread_mutex_lock(&m_mutex);
+				#endif
+			}
+
+			inline void Unlock() {
+				#ifdef _WIN32
+					LeaveCriticalSection(&m_mutex);
+				#else
+					pthread_mutex_unlock(&m_mutex);
+				#endif
+			}
+	};
 
 	class DummyData {
 	public:

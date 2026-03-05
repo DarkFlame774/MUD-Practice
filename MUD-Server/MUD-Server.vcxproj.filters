@@ -24,12 +24,18 @@
     <ClCompile Include="MultiThread-Practice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BasicLib\BasicLib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="network.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ThreadLib\ThreadLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicLib\BasicTime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

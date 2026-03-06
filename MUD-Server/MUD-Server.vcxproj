@@ -127,11 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BasicLib\BasicLib.cpp" />
+    <ClCompile Include="BasicLib\BasicLib.h" />
+    <ClCompile Include="BasicLib\BasicString.cpp" />
+    <ClCompile Include="BasicLib\BasicTime.cpp" />
     <ClCompile Include="MUD-Server.cpp" />
     <ClCompile Include="MultiThread-Practice.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BasicLib\BasicString.h" />
     <ClInclude Include="BasicLib\BasicTime.h" />
     <ClInclude Include="network.h" />
     <ClInclude Include="ThreadLib\ThreadLib.h" />

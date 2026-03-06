@@ -1,4 +1,4 @@
-#include "BasicTime.h"
+#include "BasicLib.h"
 
 #ifdef _WIN32
 class Win32PerformanceCounter {
@@ -12,7 +12,7 @@ public:
 Win32PerformanceCounter g_win32counter;
 #endif
 
-namespace BasicTime{
+namespace BasicLib{
 
 	int64_t GetTimeMS() {
 		#ifdef _WIN32
@@ -23,24 +23,24 @@ namespace BasicTime{
 		#else
 			struct timeval t;
 			int64_t s;
-			gettimeofday(&t,0);
+			gettimeofday(&t, 0);
 			s = t.tv_sec;
 			s *= 1000;
 			s += (t.tv_usec / 1000)
-			return s;
+				return s;
 		#endif
 	}
 
 	int64_t GetTimeS() {
-		return BasicTime::GetTimeMS() / 1000;
+		return GetTimeMS() / 1000;
 	}
 
 	int64_t GetTimeM() {
-		return BasicTime::GetTimeMS() / 1000 / 60;
+		return GetTimeMS() / 1000 / 60;
 	}
 
 	int64_t GetTimeH() {
-		return BasicTime::GetTimeMS() / 1000 / 60 / 60;
+		return GetTimeMS() / 1000 / 60 / 60;
 	}
 
 	std::string TimeStamp() {
@@ -55,7 +55,7 @@ namespace BasicTime{
 	std::string DateStamp() {
 		time_t t = time(0);
 		struct tm time;
-		localtime_s(&time,&t);
+		localtime_s(&time, &t);
 		char dateBuf[11];
 		strftime(dateBuf, 9, "%Y:%m:%d", &time);
 		return dateBuf;
@@ -64,29 +64,34 @@ namespace BasicTime{
 	Timer::Timer(int64_t p_timepassed) {
 		Reset(p_timepassed);
 	}
-	
+
 	void Timer::Reset(int64_t p_timepassed) {
 		m_startTime = p_timepassed;
 		m_intitTime = GetTimeMS();
 	}
+
 	int64_t Timer::GetMs() {
 		return (GetTimeMS() - m_intitTime) + m_startTime;
 	}
 
 	int64_t Timer::GetS() {
-		return GetMs()/1000;
+		return GetMs() / 1000;
 	}
+
 	int64_t Timer::GetM() {
-		return GetMs()/1000/60;
+		return GetMs() / 1000 / 60;
 	}
+
 	int64_t Timer::GetH() {
-		return GetMs()/1000/60/60;
+		return GetMs() / 1000 / 60 / 60;
 	}
+
 	int64_t Timer::GetD() {
-		return GetMs()/1000/60/60/24;
+		return GetMs() / 1000 / 60 / 60 / 24;
 	}
+
 	int64_t Timer::GetY() {
-		return GetMs()/1000/60/60/365;
+		return GetMs() / 1000 / 60 / 60 / 365;
 	}
 
 }

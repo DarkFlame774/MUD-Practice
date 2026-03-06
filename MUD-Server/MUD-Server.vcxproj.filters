@@ -24,7 +24,13 @@
     <ClCompile Include="MultiThread-Practice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BasicLib\BasicLib.cpp">
+    <ClCompile Include="BasicLib\BasicLib.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicLib\BasicTime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicLib\BasicString.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -36,6 +42,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BasicLib\BasicTime.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicLib\BasicString.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

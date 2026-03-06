@@ -5,12 +5,10 @@
 	#include <sys/time.h>
 #endif
 #include <cstdint>
-#include <string>
 #include <ctime>
 
 
-
-namespace BasicTime{
+namespace BasicLib{
 	int64_t GetTimeMS();
 	int64_t GetTimeS();
 	int64_t GetTimeM();
@@ -33,4 +31,5 @@ namespace BasicTime{
 		int64_t m_intitTime = 0;
 		int64_t m_startTime = 0;
 	};
+
 }
